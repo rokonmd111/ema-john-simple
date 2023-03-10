@@ -1,19 +1,13 @@
 import React from 'react';
 
 const ReviewItem = (props) => {
-    const { name, quantity } = props.products;
-    const productsStyle = {
-        borderBottom: '1px solid lightgray',
-        marginBottom: '5px',
-        paddingBottom: '5px',
-        marginLeft: '200px',
-    }
+    const { name, quantity, key, price } = props.products;
     return (
-        <div style={productsStyle}>
+        <div>
             <h3 className='product-name'>{name}</h3>
             <p>Quantity: {quantity}</p>
-            <br />
-            <button className='main-btn'>Remove Item</button>
+            <p><small>$ {price}</small></p>
+            <button onClick={ () => props.removeItem(key)} className='main-btn'>Remove Item</button>
         </div>
     );
 };
