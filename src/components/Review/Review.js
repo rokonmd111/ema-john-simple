@@ -4,15 +4,15 @@ import { getStoredCart, deleteFromDb, clearTheCart } from '../../utilities/fakeD
 import Cart from '../Cart/Cart';
 import ReviewItem from '../ReviewItem/ReviewItem';
 import happyImg from '../../images/giphy.gif';
+import { useNavigate } from 'react-router-dom';
 
 const Review = () => {
+    const navigate = useNavigate();
     const [cart, setCart] = useState([])
     const [orderPlaces, setOrderPlaces] = useState(false);
 
-    const handleOrder = () => {
-        setCart([]);
-        setOrderPlaces(true);
-        clearTheCart();
+    const handleCheckOut = () => {
+        navigate('/shipment')
     };
 
     const removeItem = (itemKey) => {
@@ -48,7 +48,7 @@ const Review = () => {
             </div>
             <div className='card-container'>
                 <Cart cart={cart}>
-                    <button onClick={handleOrder} className='main-btn'>Place Order</button>
+                    <button onClick={handleCheckOut} className='main-btn'>Proceed Checkout</button>
                 </Cart>
             </div>
         </div>
